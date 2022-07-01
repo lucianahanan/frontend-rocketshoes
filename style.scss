@@ -1,0 +1,446 @@
+
+$breakpoints : (
+  desktop:1280px,
+  tablet : 900px,
+  mobile : 480px,
+  tiny   : 380px,
+);
+
+@mixin query($display){
+  @each $key, $value in $breakpoints {
+    //  defining max-width
+    @if ($display == $key) {
+      @media (max-width: $value){ @content; }
+    }
+  }
+}
+
+// * { border:1px solid rgba(98, 8, 107, 0.5);}
+
+/*---------- resets ----------*/
+* {
+  box-sizing: border-box;
+  margin-block: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  margin: 0;
+  padding-block: 0;
+  padding-inline-start: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  scroll-behavior: smooth;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  transition: 200ms;
+}
+ul {
+  list-style-type: none;
+}
+button {
+  cursor: pointer;
+  transition: 200ms;
+  border: 0;
+}
+img {
+  border: 0;
+}
+button, img, input {
+  border-radius: 2px;
+}
+
+
+
+/*---------- globals ----------*/
+:root {
+  --background : #e5e5e5;
+  --button     : #ff0000;
+  --description: #9c9696;
+  --link       : #0096f6;
+  --main       : #c4c4c4;
+  --text       : #000000;
+  --white      : #ffffff;
+  --footer     : #ececed;
+}
+
+body {
+  align-items: center;
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  justify-content: center;
+  margin: 0 auto;
+  min-width: 30rem;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+}
+
+h1, h2 {
+  font-size: clamp(3.0rem, 5vw, 6.0rem);
+  font-weight: 700;
+  line-height: 7.0rem;
+}
+/*---------------------------*/
+    @include query(desktop) {
+      h1 {
+        line-height: 7.0rem;
+      }
+    }
+    @include query(mobile) {
+      h1 {
+        line-height: 5.0rem;
+      }
+    }
+    @include query(tiny) {
+      h1 {
+        line-height: 3.0rem;
+      }
+    }
+
+p {
+  color: var(--description);
+  font-size: clamp(1.4rem, 5vw, 1.6rem);
+  line-height: 1.8rem;
+  margin-top: 1.0rem;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--button);
+}
+
+button {
+  background-color: var(--button);
+  color: var(--white);
+  font-size: 2.4rem;
+  margin-top: 3.0rem;
+  max-height: 9.0rem;
+  padding: 3.3rem 7.7rem;
+  white-space: nowrap;
+
+    /*---------------------------*/
+    @include query(tiny) {
+      & {
+        padding: 2.3rem 0rem;
+        width: 100%;
+      }
+    }
+
+  &:hover {
+    background-color: var(--link);
+  }
+}
+
+
+
+/*---------- nav --------------------------------------------------*/
+nav {
+  align-items: center;
+  background-color: var(--background);
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: space-between;
+  padding: 4.0rem 6.0rem 4.0rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  /*---------------------------*/
+      @include query(desktop) {
+        & {
+          flex-direction: column;
+          padding-bottom: 2rem;
+          padding-top: 2rem;
+          width: 100%;
+        }
+      }
+      @include query(mobile) {
+        & {
+          padding: 1.0rem 0;
+          gap: 1.0rem;
+        }
+      }
+
+  a {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    /*--------------------------*/
+        @include query(tablet) {
+          & {
+            font-size: 2.0rem;
+          }
+        }
+        @include query(mobile) {
+          & {
+            font-size: 1.6rem;
+          }
+        }
+  };
+
+  ul {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: space-evenly;
+
+    /*---------------------------*/
+        @include query(desktop) {
+          & {
+            gap: 4.0rem;
+            margin-bottom: 2.0rem;
+          }
+        }
+        @include query(tablet) {
+          & {
+            gap: 2.0rem;
+            margin-top: 6.0rem;
+          }
+        }
+        @include query(mobile) {
+          & {
+            margin-top: 4.5rem;
+          }
+        }
+  }
+
+  #logo {
+
+  /*---------------------------*/
+      @include query(desktop) {
+        & {
+          left: 6.0rem;
+          position: absolute;
+        }
+      }
+  }
+
+  #search {
+
+    input {
+      border: 0;
+      color: var(--description);
+      font-size: 1.8rem;
+      height: 4.3rem;
+      padding: 1.2rem 1.0rem 1.2rem 3.9rem;
+      position: relative;
+    }
+
+    #icon-search {
+      height: 2.4rem;
+      margin-left: 1.0rem;
+      margin-right: 0.5rem;
+      margin-top: 1.2rem;
+      position: absolute;
+      width: 2.4rem;
+      z-index: 2;
+    }
+  }
+
+  #cart {
+  /*---------------------------*/
+      @include query(desktop) {
+        & {
+          position: absolute;
+          right: 6.0rem;
+          top: 4.0rem;
+        }
+      }
+      @include query(desktop) {
+        & {
+          position: absolute;
+          top: 1.0rem;
+        }
+      }
+  }
+}
+
+
+
+/*---------- header --------------------------------------------------*/
+body > header {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+
+  /*---------------------------*/
+      @include query(desktop) {
+        & {
+          flex-direction: column;
+        }
+      }
+}
+
+
+
+/*---------- featured -------------------------------------------------- */
+#product-buy {
+  background-color: var(--background);
+  padding: 10rem 6.0rem;
+
+  .price {
+    color: var(--text);
+    font-size: 4.0rem;
+    font-weight: 700;
+    line-height: 4.8rem;
+    margin-top: 2.1rem;
+  }
+
+}
+#product-featured {
+  background-color: var(--main);
+  cursor: pointer;
+  display: grid;
+  grid-column-gap: 1.0rem;
+  grid-row-gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 4.0rem 2.0rem;
+  width: 90rem;
+  max-height: 90rem;
+
+  /*---------------------------*/
+      @include query(desktop) {
+        & {
+          width: auto;
+          max-height: 135rem;
+        }
+      }
+      @include query(tablet) {
+        & {
+          max-height: 90rem;
+        }
+      }
+      @include query(mobile) {
+        & {
+          max-height: 45rem;
+        }
+      }
+      @include query(tiny) {
+        & {
+          max-height: 40rem;
+        }
+      }
+
+  img:nth-of-type(1) {
+    grid-column: 1 / -1;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  img:not(:first-of-type) {
+    aspect-ratio: 16/9;
+    border-bottom: 5px solid transparent;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr) );
+    width: 100%;
+  }
+  img:not(:first-of-type):hover {
+    border-bottom: 5px solid var(--button);
+  }
+}
+
+
+
+/*---------- explorer -------------------------------------------------- */
+#explore {
+
+  align-items: center;
+  background-color: var(--footer);
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 700;
+  justify-content: center;
+  text-transform: uppercase;
+
+  /*---------------------------*/
+      @include query(tablet) {
+        & {
+          flex-direction: column;
+          gap: 1.0rem;
+          padding-top: 6.0rem;
+        }
+      }
+
+  div {
+    max-height: 16.6rem;
+  }
+
+  .video img {
+    border: 5px solid transparent;
+    height: 100%;
+    max-height: 16.6rem;
+    max-width: 25rem;
+
+    /*---------------------------*/
+        @include query(mobile) {
+          & {
+            width: 100%;
+            margin: 0 auto;
+          }
+          &:hover {
+            border: 5px solid var(--button);
+          }
+        }
+  }
+
+  .links {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.0rem;
+    height: 6.6rem;
+    justify-content: space-evenly;
+    width: 100%;
+
+    a {
+      align-self: center;
+    }
+  }
+
+  .more {
+    align-items: center;
+    background-color: var(--text);
+    display: flex;
+    height: 16.6rem;
+    justify-content: center;
+    text-align: center;
+    width: 43.7rem;
+
+    /*---------------------------*/
+    @include query(mobile) {
+      & {
+        width: 100%;
+        margin: 0 auto;
+        height: 12rem;
+      }
+    }
+
+    a {
+      color: var(--white);
+    }
+    a:hover {
+      color: var(--button);
+    }
+  }
+}
