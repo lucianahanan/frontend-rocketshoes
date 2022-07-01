@@ -3,7 +3,7 @@
 
 <h2>Responsive Page</h2>
 
-<strong>:hammer_and_wrench: Project:</strong> Convert figma Layout to Frontend code . Using:
+<strong>:hammer_and_wrench: Project:</strong> Convert figma Layout to Frontend code. Using:
 
 <ul>
   <li><img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" height="20"> HTML</li>
@@ -14,8 +14,6 @@
   <li><img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" height="20"> Grid</li>
   <!-- <li><img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" height="20"> Javascript</li> -->
 </ul>
-
-In this challenge, the task was to convert the Layout from Figma to HTML and CSS code.
 
 I wrote from scratch all Html and, CSS (without any video reference).
 
